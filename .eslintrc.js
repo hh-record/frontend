@@ -16,5 +16,5 @@ module.exports = {
     'no-console': 'off',
     'no-empty-source': 0
   },
-
+  
 }

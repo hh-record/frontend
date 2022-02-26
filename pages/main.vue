@@ -1,8 +1,6 @@
 <template>
 			<div id="wrapper">
 
-				<Header />
-
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
@@ -201,7 +199,7 @@
 					</div>
 
 				<!-- Footer -->
-<Footer />
+
 
 			</div>
 </template>
@@ -209,17 +207,17 @@
 </style>
 
 <script>
-	import Header from '../components/Header.vue';
-	import Footer from '../components/Footer.vue';
+
 	import {recordsGet} from '@/utils/axios'
 	export default {
-		components:{
-			Header,Footer
-		},
+
 		data(){
 			return{
 				data:'',
 			}
+		},
+		created(){
+			this.get()
 		},
 		metaInfo: {
 			// title 입력하기
