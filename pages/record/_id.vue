@@ -1,16 +1,5 @@
 <template>
   <div id="wrapper">
-    <!-- Menu -->
-    <nav id="menu">
-      <h2>Menu</h2>
-      <ul>
-        <li><a href="main.html">Home</a></li>
-        <li><a href="record_detail.html">달력 보기</a></li>
-        <li><a href="record_detail.html">템플릿 보기</a></li>
-        <li><a href="record_detail.html">내 정보</a></li>
-        <li><a href="elements.html">Elements</a></li>
-      </ul>
-    </nav>
 
     <!-- Main -->
     <div id="main">
