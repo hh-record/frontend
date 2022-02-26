@@ -28,4 +28,14 @@ function myPageCheck(auth) {
     })
 }
 
-export {login, signUp, myPageCheck}
+function recordsGet(auth){
+    return main.post('records-main',{
+        headers:{
+            AUTH_TOKEN:auth
+        }
+    },
+        {code:"tc",search:""}
+    )
+}
+
+export {login, signUp, myPageCheck,recordsGet}
