@@ -46,7 +46,7 @@
 				<div v-if="signUpShow" class="modal">
 					<div class="modal-body">
 						<div class="mt-1">
-							<span class="hanFont text-black mr-5">회원가입</span>	
+							<span class="hanFont text-black mr-5">회원가입</span>
 							<span class="text-black close" @click="toggleSignUp">X</span>
 						</div>
 						<form onsubmit="return false;">
@@ -83,10 +83,11 @@
 </template>
 
 <script>
-import { login,signUp } from '@/utils/axios' 
+import { login,signUp } from '@/utils/axios'
 
 export default {
   name: "IndexPage",
+  layout: "single",
   components: {
   },
   data: () => ({
@@ -108,7 +109,7 @@ export default {
 			const request = {
 				id: this.loginId,
 				password: this.loginPassword,
-			} 
+			}
 			login(request).then((response) => {
 				const data = response.data;
 				console.log(response)
@@ -137,7 +138,7 @@ export default {
 					email:this.signUpEmail,
 					phoneNumber:this.signUpPhoneNumber,
 					password:this.signUpPassword
-			} 
+			}
 			signUp(request).then((response) => {
 				console.log(response)
 				if(response.data.code === 200){
