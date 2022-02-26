@@ -1,8 +1,7 @@
 <template>
     			<div id="wrapper">
 
-				<!-- Header -->
-                <Header />
+
 
 
 				<!-- Menu -->
@@ -20,35 +19,37 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-                            <input type="text" class="임시제목" placeholder="제목을 입력해주세요.">
+                            <input v-model="title" type="text" class="임시제목" placeholder="제목을 입력해주세요.">
+
+                            <tiptap-editor v-model="content"/>
                             <div style="margin-top: 3em;">
                                 <p style="margin: 0;">이미지 썸네일 업로드</p>
-                                <input type="file">
+                                <form >
+                                    <input id="photo" type="file" name="photo" accept="image/*" @change="imgMainUpload">
+                                </form>
                             </div>
-							<editor ref="editor" :config="config" :initialized="onInitialized"/>
-                            <input type="button" value="저장">
+                            <input type="button" value="저장" @click="regist">
                             <input type="button" value="삭제">
 						</div>
 					</div>
 
-				<!-- Footer -->
-                <Footer />
 
 			</div>
 </template>
 
 <script>
-import Header from '../components/Header.vue';
-import Footer from '../components/Footer.vue';
+import TiptapEditor from '~/components/TiptapEditor.vue'
+import {recordsRegist} from '@/utils/axios'
 
 export default {
-    components:{
-            Header,
-            Footer,
-        },
-    
+    components: {
+        TiptapEditor
+    },
     data() {
     return {
+        title:'',
+        content:'',
+        fileUrl:'',
         config: {
             image: {
             // Like in https://github.com/editor-js/image#config-params
@@ -64,10 +65,76 @@ export default {
     },
     metaInfo: {
 
+    },
+    methods:{
+        async imgMainUpload(fileList) {
+        const frm = new FormData()
+        await frm.append('file', fileList.target.files[0]);
+        this.$axios({
+            method: "post",
+            url: "http://ec2-3-36-30-114.ap-northeast-2.compute.amazonaws.com:9999/hh-record/record-file",
+            data: frm,
+            headers: {
+            'Content-Type': 'multipart/form-data',
+            // 'Content-Disposition': 'form-data'
+            },
+        }).then((response) => {
+            this.fileUrl = response.data.data
+        });
+        },
+        regist(){
+            recordsRegist('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJyb2xlcyI6W119.mVQhY-fm8FQGBrCSPdNnx3FMSB622v0t7hlB3KKSACA',this.title,this.content,this.fileUrl,this.fileUrl).then(
+                res=>{
+                    console.log(res)
+                }
+            )
+        }
     }
 }
 </script>
 
 <style scoped>
     @import '../assets/main-assets/css/main.css';
+</style>
+<style lang="scss">
+/* Basic editor styles */
+.ProseMirror{
+    border:1px solid #222;
+    margin-top:10px;
+    padding:0 10px;
+    border-radius:10px;
+    min-height:300px;
+}
+.ProseMirror {
+  > * + * {
+    margin-top: 0.75em;
+  }
+
+  code {
+    background-color: rgba(#616161, 0.1);
+    color: #616161;
+  }
+}
+
+.content {
+  padding: 1rem 0 0;
+
+  h3 {
+    margin: 1rem 0 0.5rem;
+  }
+
+  pre {
+    border-radius: 5px;
+    color: #333;
+  }
+
+  code {
+    display: block;
+    white-space: pre-wrap;
+    font-size: 0.8rem;
+    padding: 0.75rem 1rem;
+    background-color:#e9ecef;
+    color: #495057;
+  }
+}
 </style>

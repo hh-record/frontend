@@ -38,4 +38,16 @@ function recordsGet(auth){
     )
 }
 
-export {login, signUp, myPageCheck,recordsGet}
+function recordsRegist(auth,title2,content2,fileKey2,thumbnailUrl2){
+    const request ={
+        title:title2,content:content2,fileKey:fileKey2,thumbnailUrl:thumbnailUrl2
+    }
+    return main.post('records',request,{
+            headers:{
+                AUTH_TOKEN:auth
+            }
+        }
+    )
+}
+
+export {login, signUp, myPageCheck,recordsGet,recordsRegist}
