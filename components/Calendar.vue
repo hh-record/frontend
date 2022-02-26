@@ -80,7 +80,7 @@ export default {
 }
 
 .cell:not(.blank) {
-  border: 1px solid black;
+  border: 1px solid #585858;
   border-radius: 1rem;
   margin: 0.5rem;
   height: 5rem;
