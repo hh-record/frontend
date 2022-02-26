@@ -1,3 +1,4 @@
+<!--eslint-disable vue/multi-word-component-names-->
 <template>
   <Nuxt/>
 </template>
@@ -7,7 +8,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>
