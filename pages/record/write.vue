@@ -1,6 +1,5 @@
 <template>
   <div id="wrapper">
-
     <!-- Main -->
     <div id="main">
       <div class="inner">
