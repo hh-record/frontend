@@ -1,171 +1,238 @@
 <template>
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
+			<div id="wrapper">
 
-				<!-- Header -->
-				<header id="header">
-					<h1 class="hanFont">자신만의 이야기를 담고 싶으신가요?</h1>
-					<p class="hanFont">나만의 일기 만들러 가기</p>
-					<nav>
-						<ul>
-							<li><a class="icon brands fa-dribbble " @click="toggleLogin"></a></li>
-							<li><a id="sginUpBtn" class="icon solid fa-envelope" @click="toggleSignUp"></a></li>
-							<br>
-							<span style="margin-left: 0.5em; margin-right: 1.5em;" @click="toggleLogin">Sign In</span>
-							<span style="margin-left: 1em;" @click="toggleSignUp">Sign Up</span>
-						</ul>
-					</nav>
-				</header>
-				<!-- Sgin In Modal -->
-				<div v-if="loginShow" id="sginInModal" class="modal">
-					<div class="modal-body">
-						<div class="mt-1">
-							<span class="hanFont text-black mr-5">로그인</span>
-							<span class="text-black close"  @click="toggleLogin">X</span>
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+                            <section class="mt-5">
+                                <h3>내 기록들</h3>
+                                <div class="sort-end">
+                                    <input id="search" type="text" name="search" placeholder="search" class="mb-1">
+                                    <a href="record_celendar.html" class="icon regular fa-eye sort-end mt-1"> 검색</a>
+                                </div>
+                                <div class="mt-5">
+                                    <ul class="alt list">
+                                        <li><a href="record_detail.html">2022.01.04 오늘은 사케동을 먹었다.</a></li>
+                                        <li><a href="record_detail.html">2022.01.05 오늘도 사케동을 먹었따.</a></li>
+                                        <li><a href="record_detail.html">2022.01.06 오늘은 아구찜 먹었다. 내일은 사케동 먹을거다.</a></li>
+                                        <li><a href="record_detail.html">2022.01.08 오늘 사케동을 먹으려 했는데 아구찜을 먹었따.</a></li>
+                                        <li><a href="record_detail.html">2022.01.10 Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</a></li>
+                                    </ul>
+                                </div>
+                            </section>
+                            <div class="pagination">
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#" class="active">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">7</a>
+                                <a href="#">8</a>
+                                <a href="#">9</a>
+                                <a href="#">10</a>
+                                <a href="#">&gt;</a>
+                                <a href="#">&raquo;</a>
+                            </div>
 						</div>
-						<form>
-							<div class="textForm">
-							  <input v-model="loginId" name="loginId" type="text" class="id" placeholder="아이디">
-							</div>
-							<div class="textForm">
-							  <input v-model="loginPassword" name="loginPw" type="password" class="pw" placeholder="비밀번호">
-							</div>
-							<div class="forgetBox">
-								<ul class="text-black font-size-small">
-									<li><a href="#">아이디를 잊어버리셨나요?</a></li>
-									<li><a href="#">비밀번호를 잊어버리셨나요?</a></li>
-								</ul>
-							</div>
-							<input class="btn" value="L O G I N" @click="loginSubmit"/>
-						  </form>
 					</div>
-				</div>
-				<!-- Sign Up Modal -->
-				<div v-if="signUpShow" class="modal">
-					<div class="modal-body">
-						<div class="mt-1">
-							<span class="hanFont text-black mr-5">회원가입</span>
-							<span class="text-black close" @click="toggleSignUp">X</span>
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>One Day Record에 오신 것을 환영합니다.</h1>
+								<p>오늘 하루도 행복하게 보내셨나요? 오늘 느꼈던 감정들을 기억하며 기록해보세요!</p>
+							</header>
+							<div class="sort-end">
+								<router-link to="write" class="icon regular fa-edit"> 오늘 일기 쓰러가기</router-link>
+							</div>
+							<section class="tiles">
+								<article class="style1">
+									<span class="image">
+										<img src="@/assets/main-images/pic01.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.04</h2>
+										<div class="content">
+											<p>오늘은 사케동을 먹었다.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="@/assets/main-images/pic02.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.05</h2>
+										<div class="content">
+											<p>오늘도 사케동을 먹었따.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="@/assets/main-images/pic03.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.06</h2>
+										<div class="content">
+											<p>오늘은 아구찜 먹었다. 내일은 사케동 먹을거다.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="@/assets/main-images/pic04.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.08</h2>
+										<div class="content">
+											<p>오늘 사케동을 먹으려 했는데 아구찜을 먹었따.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="@/assets/main-images/pic05.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.10</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="@/assets/main-images/pic06.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.11</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style2">
+									<span class="image">
+										<img src="@/assets/main-images/pic07.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.12</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style3">
+									<span class="image">
+										<img src="@/assets/main-images/pic08.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.15</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style1">
+									<span class="image">
+										<img src="@/assets/main-images/pic09.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.16</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style5">
+									<span class="image">
+										<img src="@/assets/main-images/pic10.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.17</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style6">
+									<span class="image">
+										<img src="@/assets/main-images/pic11.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.19</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+								<article class="style4">
+									<span class="image">
+										<img src="@/assets/main-images/pic12.jpg" alt="" />
+									</span>
+									<a href="record_detail.html">
+										<h2>2022.01.23</h2>
+										<div class="content">
+											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+										</div>
+									</a>
+								</article>
+							</section>
 						</div>
-						<form onsubmit="return false;">
-							<div class="textForm">
-							  <input v-model="signUpId" name="loginId" type="text" class="id" placeholder="아이디">
-							</div>
-							<div class="textForm">
-							  <input v-model="signUpPassword" name="loginPw" type="password" class="pw" placeholder="비밀번호">
-							</div>
-							 <div class="textForm">
-							  <input v-model="signUpPasswordCheck" name="loginPwConfirm" type="password" class="pw" placeholder="비밀번호 확인">
-							</div>
-							<div class="textForm">
-							  <input v-model="signUpName" name="name" type="text" class="name" placeholder="이름">
-							</div>
-							 <div class="textForm">
-							  <input v-model="signUpEmail" name="email" type="text" class="email" placeholder="이메일">
-							</div>
-							<div class="textForm">
-							  <input v-model="signUpPhoneNumber" name="cellphoneNo" type="number" class="cellphoneNo" placeholder="전화번호">
-							</div>
-							<input type="submit" class="btn" value="J O I N" @click="signUpSubmit"/>
-						  </form>
+						<div class="pagination">
+							<a href="#">1</a>
+							<a href="#">2</a>
+							<a href="#" class="active">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							<a href="#">6</a>
+							<a href="#">7</a>
+							<a href="#">8</a>
+							<a href="#">9</a>
+							<a href="#">10</a>
+							<a href="#">&gt;</a>
+							<a href="#">&raquo;</a>
+						</div>
 					</div>
-				</div>
+
 				<!-- Footer -->
-				<footer id="footer">
-					<span class="copyright">copyright 2022 &copy; Design for html5up Make for <a href="#">HH</a>.</span>
-				</footer>
 
 
 			</div>
-		</div>
 </template>
 
 <script>
-import { login,signUp } from '@/utils/axios'
 
-export default {
-  name: "IndexPage",
-  components: {
-  },
-  layout: "single",
-  data: () => ({
-      active: false,
-      value: null,
-	  loginShow:false,
-	  signUpShow:false,
-	  loginId:"",
-	  loginPassword: "",
-	  signUpId:"",
-	  signUpPassword:"",
-	  signUpPasswordCheck:"",
-	  signUpName:"",
-	  signUpPhoneNumber:"",
-	  signUpEmail:"",
-    }),
-    methods: {
-		loginSubmit() {
-			const request = {
-				id: this.loginId,
-				password: this.loginPassword,
+	import {recordsGet} from '@/utils/axios'
+	export default {
+    middleware: "authentication",
+
+		data(){
+			return{
+				data:'',
 			}
-			login(request).then((response) => {
-				const data = response.data;
-				console.log(response)
-				if(data.code === 200){
-					console.log(data)
-					sessionStorage.setItem('SESSION',data.data.AUTH_TOKEN);
-					this.$router.replace('record')
-					// } else {
-					// alert("아이디와 비밀번호를 확인하신 후 다시 시도해 주세요.");
-					// }
-				}else{
-					alert(data.status)
-				}
-			}).catch((err)=>{
-				console.log(err)
-			});
 		},
-		signUpSubmit() {
-			if(this.signUpPassword !==this.signUpPasswordCheck){
-				alert("비밀번호가 일치하지 않습니다.")
-				return false
+		created(){
+			this.get()
+		},
+		metaInfo: {
+			// title 입력하기
+			title: 'One Day Record',
+		},
+		methods: {
+			get(){
+				recordsGet()
+				.then(res=>{
+					this.data = res
+				})
 			}
-			const request = {
-				    id:this.signUpId,
-					userName:this.signUpName,
-					email:this.signUpEmail,
-					phoneNumber:this.signUpPhoneNumber,
-					password:this.signUpPassword
-			}
-			signUp(request).then((response) => {
-				console.log(response)
-				if(response.data.code === 200){
-					alert(response.data.data)
-					this.toggleSignUp()
-				}else{
-					alert("회원가입에 실패하였습니다.")
-				}
-			}).catch((err)=>{
-				console.log(err)
-			});
-		},
-		toggleLogin(){
-			this.loginShow = !this.loginShow;
-		},
-		toggleSignUp(){
-			this.signUpShow = !this.signUpShow;
-		},
-      	onConfirm () {
-      	  this.value = 'Agreed'
-      	},
-      	onCancel () {
-      	  this.value = 'Disagreed'
-      	}
-    }
-};
+		}
+	}
 </script>
-<style scoped src="~/assets/intro-assets/css/intro.css">
 
+<style scoped src="~/assets/main-assets/css/main.css">
 </style>
+

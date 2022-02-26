@@ -25,10 +25,10 @@ import dal from '../components/Calendar.vue'
 // Register components in your 'main.js'
 
 export default {
-    components: {
-
-        dal
-    }
+  components: {
+    dal
+  },
+  middleware: "authentication"
 }
 </script>
 
