@@ -1,9 +1,9 @@
 <template>
   <div class="calendar">
     <h1>
-      <span class="prev" @click="currentMonth--">{{ '<' }}</span>
+      <span class="prev" @click="prevMonth()">{{ '<' }}</span>
       {{ monthString }}
-      <span class="next" @click="currentMonth++">{{ '>' }}</span>
+      <span class="next" @click="nextMonth()">{{ '>' }}</span>
     </h1>
     <div class="header">
       <div>MON</div>
@@ -60,6 +60,7 @@ export default {
   computed: {
     monthString() {
       const temp = new Date()
+      temp.setFullYear(this.currentYear)
       temp.setMonth(this.currentMonth)
       return temp.toLocaleString('default', {
         year: 'numeric',
@@ -68,12 +69,14 @@ export default {
     },
     gapDayCount() {
       const temp = new Date()
+      temp.setFullYear(this.currentYear)
       temp.setMonth(this.currentMonth)
       temp.setDate(1)
       return (temp.getDay() || 7) - 1
     },
     endDateOfMonth() {
       const temp = new Date()
+      temp.setFullYear(this.currentYear)
       temp.setMonth(this.currentMonth + 1)
       temp.setDate(0)
 
@@ -89,8 +92,26 @@ export default {
     },
   },
   methods: {
+    prevMonth() {
+      if (this.currentMonth > 0) this.currentMonth--
+      // Date object 기준 1월
+      else {
+        this.currentMonth = 11 // Date object 기준 12월
+        this.currentYear--
+      }
+    },
+    nextMonth() {
+      if (this.currentMonth < 11) this.currentMonth++
+      // Data object 기준 12월
+      else {
+        this.currentMonth = 0 // Date object 기준 1월
+        this.currentYear++
+      }
+    },
+
     isWrittenDay(day) {
       const temp = new Date()
+      temp.setFullYear(this.currentYear)
       temp.setMonth(this.currentMonth)
       temp.setDate(day)
 
@@ -102,6 +123,7 @@ export default {
     },
     isHoliday(day) {
       const temp = new Date()
+      temp.setFullYear(this.currentYear)
       temp.setMonth(this.currentMonth)
       temp.setDate(day)
 
