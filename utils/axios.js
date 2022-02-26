@@ -8,6 +8,8 @@ const main = axios.create({
   baseURL: 'http://3.36.30.114:9999/hh-record/',
 })
 
+const calendar = axios.create({})
+
 // const image = axios.create({
 //     baseURL:'http://3.36.30.114:9999/image/'
 // })
@@ -51,6 +53,24 @@ function recordsRegist(auth, title2, content2, fileKey2, thumbnailUrl2) {
     headers: {
       AUTH_TOKEN: auth,
     },
+  })
+}
+
+export async function fetchHoliday({ year, month }) {
+  const response = await calendar.get('/getRestDeInfo', {
+    params: {
+      ServiceKey: process.env.KASI_API_KEY,
+      solYear: year,
+      solMonth: month,
+      _type: 'json',
+    },
+  })
+
+  console.log(response)
+  return response?.data?.response?.body?.items?.item?.map?.((value) => {
+    const temp = value?.locdate.toString?.()
+    console.log(temp)
+    return `${temp.substr(0, 4)}-${temp.substr(4, 2)}-${temp.substr(6, 2)}`
   })
 }
 

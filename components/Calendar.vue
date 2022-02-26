@@ -1,9 +1,9 @@
 <template>
   <div class="calendar">
     <h1>
-      <span class="prev" @click="currentMonth--">{{ '<' }}</span
-      >{{ monthString
-      }}<span class="next" @click="currentMonth++">{{ '>' }}</span>
+      <span class="prev" @click="currentMonth--">{{ '<' }}</span>
+      {{ monthString }}
+      <span class="next" @click="currentMonth++">{{ '>' }}</span>
     </h1>
     <div class="header">
       <div>MON</div>
@@ -20,19 +20,42 @@
         :key="`blank_${i}`"
         class="cell blank"
       ></div>
-      <div v-for="(day, i) in endDateOfMonth" :key="i" class="cell">
+      <div
+        v-for="(day, i) in endDateOfMonth"
+        :key="i"
+        class="cell"
+        :class="{ holiday: isHoliday(day) }"
+      >
         {{ day }}
+        <span v-if="isWrittenDay(day)">👽</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { fetchHoliday } from '@/utils/axios'
+
 export default {
+  props: {
+    listRecord: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+  },
   data() {
     return {
+      currentYear: new Date().getFullYear(),
       currentMonth: new Date().getMonth(),
+      listHoliday: [],
     }
+  },
+  async fetch() {
+    this.listHoliday = await fetchHoliday({
+      year: this.currentYear,
+      month: (this.currentMonth + 1).toString().padStart(2, '0'),
+    })
   },
   computed: {
     monthString() {
@@ -55,6 +78,39 @@ export default {
       temp.setDate(0)
 
       return temp.getDate()
+    },
+  },
+  watch: {
+    async currentMonth() {
+      this.listHoliday = await fetchHoliday({
+        year: this.currentYear,
+        month: (this.currentMonth + 1).toString().padStart(2, '0'),
+      })
+    },
+  },
+  methods: {
+    isWrittenDay(day) {
+      const temp = new Date()
+      temp.setMonth(this.currentMonth)
+      temp.setDate(day)
+
+      const dateString = `${temp.getFullYear()}-${(temp.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${temp.getDate().toString().padStart(2, '0')}`
+
+      return this.listRecord.map((value) => value.test).includes(dateString)
+    },
+    isHoliday(day) {
+      const temp = new Date()
+      temp.setMonth(this.currentMonth)
+      temp.setDate(day)
+
+      const dateString = `${temp.getFullYear()}-${(temp.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${temp.getDate().toString().padStart(2, '0')}`
+
+      console.log({ day, flag: this.listHoliday?.includes?.(dateString) })
+      return this.listHoliday?.includes?.(dateString)
     },
   },
 }
@@ -96,6 +152,9 @@ export default {
   margin: 0.5rem;
   height: 5rem;
   font-size: small;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .header > div:nth-child(7n-1),
@@ -103,8 +162,14 @@ export default {
   color: blue;
 }
 
+.cell.holiday,
 .header > div:nth-child(7n),
 .cell:nth-child(7n) {
   color: red;
+}
+
+.cell:not(.blank) span {
+  font-size: x-large;
+  margin: auto;
 }
 </style>
