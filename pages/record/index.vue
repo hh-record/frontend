@@ -50,7 +50,7 @@
 							<section class="tiles">
 								<article class="style1">
 									<span class="image">
-										<img src="../assets/main-images/pic01.jpg" alt="" />
+										<img src="@/assets/main-images/pic01.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.04</h2>
@@ -61,7 +61,7 @@
 								</article>
 								<article class="style2">
 									<span class="image">
-										<img src="../assets/main-images/pic02.jpg" alt="" />
+										<img src="@/assets/main-images/pic02.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.05</h2>
@@ -72,7 +72,7 @@
 								</article>
 								<article class="style3">
 									<span class="image">
-										<img src="../assets/main-images/pic03.jpg" alt="" />
+										<img src="@/assets/main-images/pic03.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.06</h2>
@@ -83,7 +83,7 @@
 								</article>
 								<article class="style4">
 									<span class="image">
-										<img src="../assets/main-images/pic04.jpg" alt="" />
+										<img src="@/assets/main-images/pic04.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.08</h2>
@@ -94,7 +94,7 @@
 								</article>
 								<article class="style5">
 									<span class="image">
-										<img src="../assets/main-images/pic05.jpg" alt="" />
+										<img src="@/assets/main-images/pic05.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.10</h2>
@@ -105,7 +105,7 @@
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src="../assets/main-images/pic06.jpg" alt="" />
+										<img src="@/assets/main-images/pic06.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.11</h2>
@@ -116,7 +116,7 @@
 								</article>
 								<article class="style2">
 									<span class="image">
-										<img src="../assets/main-images/pic07.jpg" alt="" />
+										<img src="@/assets/main-images/pic07.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.12</h2>
@@ -127,7 +127,7 @@
 								</article>
 								<article class="style3">
 									<span class="image">
-										<img src="../assets/main-images/pic08.jpg" alt="" />
+										<img src="@/assets/main-images/pic08.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.15</h2>
@@ -138,7 +138,7 @@
 								</article>
 								<article class="style1">
 									<span class="image">
-										<img src="../assets/main-images/pic09.jpg" alt="" />
+										<img src="@/assets/main-images/pic09.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.16</h2>
@@ -149,7 +149,7 @@
 								</article>
 								<article class="style5">
 									<span class="image">
-										<img src="../assets/main-images/pic10.jpg" alt="" />
+										<img src="@/assets/main-images/pic10.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.17</h2>
@@ -160,7 +160,7 @@
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src="../assets/main-images/pic11.jpg" alt="" />
+										<img src="@/assets/main-images/pic11.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.19</h2>
@@ -171,7 +171,7 @@
 								</article>
 								<article class="style4">
 									<span class="image">
-										<img src="../assets/main-images/pic12.jpg" alt="" />
+										<img src="@/assets/main-images/pic12.jpg" alt="" />
 									</span>
 									<a href="record_detail.html">
 										<h2>2022.01.23</h2>
@@ -180,7 +180,7 @@
 										</div>
 									</a>
 								</article>
-							</section>							
+							</section>
 						</div>
 						<div class="pagination">
 							<a href="#">1</a>
@@ -203,7 +203,7 @@
 
 			</div>
 </template>
-<style scoped src="../assets/main-assets/css/main.css">
+<style scoped src="~/assets/main-assets/css/main.css">
 </style>
 
 <script>
@@ -229,7 +229,7 @@
 				.then(res=>{
 					this.data = res
 				})
-			}	
+			}
 		}
 	}
 </script>

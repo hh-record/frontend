@@ -87,9 +87,9 @@ import { login,signUp } from '@/utils/axios'
 
 export default {
   name: "IndexPage",
-  layout: "single",
   components: {
   },
+  layout: "single",
   data: () => ({
       active: false,
       value: null,
@@ -116,7 +116,7 @@ export default {
 				if(data.code === 200){
 					console.log(data)
 					sessionStorage.setItem('SESSION',data.data.AUTH_TOKEN);
-					this.$router.push('/')
+					this.$router.replace('record')
 					// } else {
 					// alert("아이디와 비밀번호를 확인하신 후 다시 시도해 주세요.");
 					// }
@@ -166,6 +166,6 @@ export default {
     }
 };
 </script>
-<style scoped src="../assets/intro-assets/css/intro.css">
+<style scoped src="~/assets/intro-assets/css/intro.css">
 
 </style>
