@@ -43,9 +43,7 @@ export default {
   mounted() {
     this.editor = new Editor({
       content: this.value,
-      extensions: [
-        StarterKit,
-      ],
+      extensions: [StarterKit],
       onUpdate: () => {
         // HTML
         this.$emit('input', this.editor.getHTML())

@@ -20,20 +20,19 @@
 </template>
 
 <script>
-
 import dal from '../components/Calendar.vue'
 // Register components in your 'main.js'
 
 export default {
   components: {
-    dal
+    dal,
   },
-  middleware: "authentication"
+  middleware: 'authentication',
 }
 </script>
 
 <style>
-	@import '../assets/main-assets/css/main.css';
+@import '../assets/main-assets/css/main.css';
 
 .content {
   justify-content: center;

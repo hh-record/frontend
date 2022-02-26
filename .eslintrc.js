@@ -14,7 +14,6 @@ module.exports = {
   rules: {
     'vue/multi-word-component-names': 0,
     'no-console': 'off',
-    'no-empty-source': 0
+    'no-empty-source': 0,
   },
-  
 }

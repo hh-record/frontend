@@ -1,10 +1,8 @@
 <!--eslint-disable vue/multi-word-component-names-->
 <template>
-  <Nuxt/>
+  <Nuxt />
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
