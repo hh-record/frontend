@@ -26,7 +26,7 @@
         <div class="inner">
           <h2>Menu</h2>
           <ul>
-            <li><router-link to="/Main">Home</router-link></li>
+            <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/Calendar">달력 보기</router-link></li>
             <li><router-link to="/Detail">템플릿 보기</router-link></li>
             <li><router-link to="/mypage">내 정보</router-link></li>

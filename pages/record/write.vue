@@ -44,17 +44,6 @@ export default {
       title: '',
       content: '',
       fileUrl: '',
-      config: {
-        image: {
-          // Like in https://github.com/editor-js/image#config-params
-          endpoints: {
-            byFile: 'http://localhost:8090/image',
-            byUrl: 'http://localhost:8090/image-by-url',
-          },
-          field: 'image',
-          types: 'image/*',
-        },
-      },
     }
   },
   metaInfo: {},

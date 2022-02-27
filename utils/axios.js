@@ -31,14 +31,14 @@ function myPageCheck(auth) {
 }
 
 function recordsGet(auth) {
-  return main.post(
-    'records-main',
+  return main.get(
+    'records-main/',
+
     {
       headers: {
         AUTH_TOKEN: auth,
-      },
-    },
-    { code: 'tc', search: '' }
+      }
+    }
   )
 }
 

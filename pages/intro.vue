@@ -180,7 +180,7 @@ export default {
           console.log(response)
           if (data.code === 200) {
             console.log(data)
-            sessionStorage.setItem('SESSION', data.data.AUTH_TOKEN)
+            sessionStorage.setItem('SESSION', data.data)
             this.$router.replace('/')
             // } else {
             // alert("아이디와 비밀번호를 확인하신 후 다시 시도해 주세요.");

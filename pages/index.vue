@@ -22,36 +22,15 @@
           </div>
           <div class="mt-5">
             <ul class="alt list">
-              <li>
+              <li v-for="(item,index) in data" :key="index">
                 <a href="record_detail.html"
-                  >2022.01.04 오늘은 사케동을 먹었다.</a
-                >
-              </li>
-              <li>
-                <a href="record_detail.html"
-                  >2022.01.05 오늘도 사케동을 먹었따.</a
-                >
-              </li>
-              <li>
-                <a href="record_detail.html"
-                  >2022.01.06 오늘은 아구찜 먹었다. 내일은 사케동 먹을거다.</a
-                >
-              </li>
-              <li>
-                <a href="record_detail.html"
-                  >2022.01.08 오늘 사케동을 먹으려 했는데 아구찜을 먹었따.</a
-                >
-              </li>
-              <li>
-                <a href="record_detail.html"
-                  >2022.01.10 Sed nisl arcu euismod sit amet nisi lorem etiam
-                  dolor veroeros et feugiat.</a
+                  >{{item.modDate}} {{item.title}}</a
                 >
               </li>
             </ul>
           </div>
         </section>
-        <div class="pagination">
+        <!-- <div class="pagination">
           <a href="#">1</a>
           <a href="#">2</a>
           <a href="#" class="active">3</a>
@@ -64,7 +43,7 @@
           <a href="#">10</a>
           <a href="#">&gt;</a>
           <a href="#">&raquo;</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- Main -->
@@ -78,170 +57,26 @@
           </p>
         </header>
         <div class="sort-end">
-          <router-link to="write" class="icon regular fa-edit">
+          <router-link to="/record/write" class="icon regular fa-edit">
             오늘 일기 쓰러가기</router-link
           >
         </div>
         <section class="tiles">
-          <article class="style1">
+          <article v-for="(item,index) in data" :key="index" class="style1">
             <span class="image">
-              <img src="@/assets/main-images/pic01.jpg" alt="" />
+              <img :src="item.fileUrl" alt="" />
             </span>
             <a href="record_detail.html">
-              <h2>2022.01.04</h2>
+              <h2>{{item.modDate}}</h2>
               <div class="content">
-                <p>오늘은 사케동을 먹었다.</p>
+                <p>{{item.title}}</p>
               </div>
             </a>
           </article>
-          <article class="style2">
-            <span class="image">
-              <img src="@/assets/main-images/pic02.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.05</h2>
-              <div class="content">
-                <p>오늘도 사케동을 먹었따.</p>
-              </div>
-            </a>
-          </article>
-          <article class="style3">
-            <span class="image">
-              <img src="@/assets/main-images/pic03.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.06</h2>
-              <div class="content">
-                <p>오늘은 아구찜 먹었다. 내일은 사케동 먹을거다.</p>
-              </div>
-            </a>
-          </article>
-          <article class="style4">
-            <span class="image">
-              <img src="@/assets/main-images/pic04.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.08</h2>
-              <div class="content">
-                <p>오늘 사케동을 먹으려 했는데 아구찜을 먹었따.</p>
-              </div>
-            </a>
-          </article>
-          <article class="style5">
-            <span class="image">
-              <img src="@/assets/main-images/pic05.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.10</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
-          <article class="style6">
-            <span class="image">
-              <img src="@/assets/main-images/pic06.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.11</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
-          <article class="style2">
-            <span class="image">
-              <img src="@/assets/main-images/pic07.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.12</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
-          <article class="style3">
-            <span class="image">
-              <img src="@/assets/main-images/pic08.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.15</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
-          <article class="style1">
-            <span class="image">
-              <img src="@/assets/main-images/pic09.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.16</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
-          <article class="style5">
-            <span class="image">
-              <img src="@/assets/main-images/pic10.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.17</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
-          <article class="style6">
-            <span class="image">
-              <img src="@/assets/main-images/pic11.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.19</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
-          <article class="style4">
-            <span class="image">
-              <img src="@/assets/main-images/pic12.jpg" alt="" />
-            </span>
-            <a href="record_detail.html">
-              <h2>2022.01.23</h2>
-              <div class="content">
-                <p>
-                  Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros
-                  et feugiat.
-                </p>
-              </div>
-            </a>
-          </article>
+          
         </section>
       </div>
-      <div class="pagination">
+      <!-- <div class="pagination">
         <a href="#">1</a>
         <a href="#">2</a>
         <a href="#" class="active">3</a>
@@ -254,7 +89,7 @@
         <a href="#">10</a>
         <a href="#">&gt;</a>
         <a href="#">&raquo;</a>
-      </div>
+      </div> -->
     </div>
 
     <!-- Footer -->
@@ -262,6 +97,7 @@
 </template>
 
 <script>
+import { getSession } from '../utils/auth'
 import { recordsGet } from '@/utils/axios'
 export default {
   middleware: 'authentication',
@@ -269,20 +105,24 @@ export default {
   data() {
     return {
       data: '',
+      token:"",
     }
   },
   created() {
-    this.get()
+    this.token= getSession()
+    this.get(this.token)
   },
   metaInfo: {
     // title 입력하기
     title: 'One Day Record',
   },
   methods: {
-    get() {
-      recordsGet().then((res) => {
-        this.data = res
+    get(token) {
+      recordsGet(token).then((res) => {
+        console.log(res)
+        this.data = res.data.data
       })
+      .catch(err =>{console.log(err)})
     },
   },
 }
