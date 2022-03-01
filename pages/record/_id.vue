@@ -8,9 +8,8 @@
           <span class="image main"
             ><img :src="record.fileUrl" alt=""
           /></span>
-          <p>
-            {{record.content}}
-          </p>
+          <p v-html="record.content"></p>
+
         </section>
         <a href="record_regist.html" class="button">수정하기</a>
         <a href="#" class="button">삭제하기</a>
