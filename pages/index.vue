@@ -23,9 +23,9 @@
           <div class="mt-5">
             <ul class="alt list">
               <li v-for="(item,index) in data" :key="index">
-                <a href="record_detail.html"
-                  >{{item.modDate}} {{item.title}}</a
-                >
+                <router-link :to="'/record/'+item.record_seq">
+                  {{item.modDate}} {{item.title}}
+                </router-link>
               </li>
             </ul>
           </div>

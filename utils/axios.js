@@ -33,12 +33,27 @@ function myPageCheck(auth) {
 function recordsGet(auth) {
   return main.get(
     'records-main/',
-
     {
       headers: {
         AUTH_TOKEN: auth,
       }
     }
+  )
+}
+
+function recordsGetId(auth, id) {
+  const request = {
+    recordId:id
+  }
+  return main.post(
+    'records/'+id,
+    request,
+    {
+      headers: {
+        AUTH_TOKEN: auth,
+      }
+    },
+    
   )
 }
 
@@ -74,4 +89,4 @@ export async function fetchHoliday({ year, month }) {
   })
 }
 
-export { login, signUp, myPageCheck, recordsGet, recordsRegist }
+export { login, signUp, myPageCheck, recordsGet, recordsRegist, recordsGetId }
