@@ -64,7 +64,7 @@
         <section class="tiles">
           <article v-for="(item,index) in data" :key="index" class="style1">
             <span class="image">
-              <img :src="item.fileUrl" alt="" />
+              <img :src="item.thumbnailUrl" alt="" />
             </span>
             <a href="record_detail.html">
               <h2>{{item.modDate}}</h2>

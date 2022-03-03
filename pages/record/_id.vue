@@ -6,7 +6,7 @@
         <section>
           <h1>{{record.title}}</h1>
           <span class="image main"
-            ><img :src="record.fileUrl" alt=""
+            ><img v-for="(item,index) in record.fileUrl" :key="index" :src="record.fileUrl[index]" alt=""
           /></span>
           <p v-html="record.content"></p>
 
