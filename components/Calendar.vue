@@ -1,9 +1,9 @@
 <template>
   <div class="calendar">
     <h1>
-      <span class="prev" @click="prevMonth()">{{ '<' }}</span>
+      <span class="prev" @click="$emit('update:calendar', -1)">{{ '<' }}</span>
       {{ monthString }}
-      <span class="next" @click="nextMonth()">{{ '>' }}</span>
+      <span class="next" @click="$emit('update:calendar', 1)">{{ '>' }}</span>
     </h1>
     <div class="header">
       <div>MON</div>
@@ -27,41 +27,47 @@
         :class="{ holiday: isHoliday(day) }"
       >
         {{ day }}
-        <span v-if="isWrittenDay(day)">👽</span>
+        <span v-if="isWrittenDay(day)">📝</span>
       </div>
     </div>
+    <calendar-list date="2022-03-01" />
   </div>
 </template>
 
 <script>
-import { fetchHoliday } from '@/utils/axios'
-
+import CalendarList from './CalendarList.vue'
 export default {
+  components: { CalendarList },
   props: {
     listRecord: {
       type: Array,
       required: false,
       default: () => [],
     },
+    listHoliday: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+    year: {
+      type: Number,
+      required: false,
+      default: new Date().getFullYear(),
+    },
+    month: {
+      type: Number,
+      required: false,
+      default: new Date().getMonth(),
+    },
   },
   data() {
-    return {
-      currentYear: new Date().getFullYear(),
-      currentMonth: new Date().getMonth(),
-      listHoliday: [],
-    }
-  },
-  async fetch() {
-    this.listHoliday = await fetchHoliday({
-      year: this.currentYear,
-      month: (this.currentMonth + 1).toString().padStart(2, '0'),
-    })
+    return {}
   },
   computed: {
     monthString() {
       const temp = new Date()
-      temp.setFullYear(this.currentYear)
-      temp.setMonth(this.currentMonth)
+      temp.setFullYear(this.year)
+      temp.setMonth(this.month - 1)
       return temp.toLocaleString('default', {
         year: 'numeric',
         month: '2-digit',
@@ -69,62 +75,38 @@ export default {
     },
     gapDayCount() {
       const temp = new Date()
-      temp.setFullYear(this.currentYear)
-      temp.setMonth(this.currentMonth)
+      temp.setFullYear(this.year)
+      temp.setMonth(this.month - 1)
       temp.setDate(1)
       return (temp.getDay() || 7) - 1
     },
     endDateOfMonth() {
       const temp = new Date()
-      temp.setFullYear(this.currentYear)
-      temp.setMonth(this.currentMonth + 1)
+      temp.setFullYear(this.year)
+      temp.setMonth(this.month - 1)
       temp.setDate(0)
 
       return temp.getDate()
     },
   },
-  watch: {
-    async currentMonth() {
-      this.listHoliday = await fetchHoliday({
-        year: this.currentYear,
-        month: (this.currentMonth + 1).toString().padStart(2, '0'),
-      })
-    },
-  },
+  watch: {},
   methods: {
-    prevMonth() {
-      if (this.currentMonth > 0) this.currentMonth--
-      // Date object 기준 1월
-      else {
-        this.currentMonth = 11 // Date object 기준 12월
-        this.currentYear--
-      }
-    },
-    nextMonth() {
-      if (this.currentMonth < 11) this.currentMonth++
-      // Data object 기준 12월
-      else {
-        this.currentMonth = 0 // Date object 기준 1월
-        this.currentYear++
-      }
-    },
-
     isWrittenDay(day) {
       const temp = new Date()
-      temp.setFullYear(this.currentYear)
-      temp.setMonth(this.currentMonth)
+      temp.setFullYear(this.year)
+      temp.setMonth(this.month - 1)
       temp.setDate(day)
 
       const dateString = `${temp.getFullYear()}-${(temp.getMonth() + 1)
         .toString()
         .padStart(2, '0')}-${temp.getDate().toString().padStart(2, '0')}`
 
-      return this.listRecord.map((value) => value.test).includes(dateString)
+      return this.listRecord.includes(dateString)
     },
     isHoliday(day) {
       const temp = new Date()
-      temp.setFullYear(this.currentYear)
-      temp.setMonth(this.currentMonth)
+      temp.setFullYear(this.year)
+      temp.setMonth(this.month - 1)
       temp.setDate(day)
 
       const dateString = `${temp.getFullYear()}-${(temp.getMonth() + 1)
@@ -177,6 +159,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  cursor: pointer;
 }
 
 .header > div:nth-child(7n-1),
