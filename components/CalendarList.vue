@@ -1,6 +1,10 @@
 <template>
   <ul>
-    <li v-for="(record, i) in listRecord" :key="i">{{ record.title }}</li>
+    <li v-for="(record, i) in listRecord" :key="i">
+      <nuxt-link :to="'/record/' + record.record_seq">{{
+        record.title
+      }}</nuxt-link>
+    </li>
   </ul>
 </template>
 
@@ -24,3 +28,13 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+ul {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+</style>
