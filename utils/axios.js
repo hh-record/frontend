@@ -38,15 +38,17 @@ function recordsGet(auth) {
   })
 }
 
-export function recordsGetByDate(auth, date) {
-  return main.get('records-main/', {
-    headers: {
-      AUTH_TOKEN: auth,
-    },
-    params: {
-      date,
-    },
-  })
+export async function recordsGetByDate(auth, date) {
+  return (
+    await main.get('records-main/', {
+      headers: {
+        AUTH_TOKEN: auth,
+      },
+      params: {
+        date,
+      },
+    })
+  )?.data?.data
 }
 
 function recordsGetId(auth, id) {
