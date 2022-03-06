@@ -1,9 +1,9 @@
 <template>
   <div class="calendar">
     <h1>
-      <span class="prev" @click="$emit('update:calendar', -1)">{{ '<' }}</span>
+      <span class="prev" @click="prev()">{{ '<' }}</span>
       {{ monthString }}
-      <span class="next" @click="$emit('update:calendar', 1)">{{ '>' }}</span>
+      <span class="next" @click="next()">{{ '>' }}</span>
     </h1>
     <div class="header">
       <div>MON</div>
@@ -94,6 +94,14 @@ export default {
   },
   watch: {},
   methods: {
+    prev() {
+      this.selectedDate = null
+      this.$emit('update:calendar', -1)
+    },
+    next() {
+      this.selectedDate = null
+      this.$emit('update:calendar', 1)
+    },
     getDateString(day) {
       const temp = new Date()
       temp.setFullYear(this.year)
