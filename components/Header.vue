@@ -30,8 +30,7 @@
             <li><router-link to="/Calendar">달력 보기</router-link></li>
             <li><router-link to="/Detail">템플릿 보기</router-link></li>
             <li><router-link to="/mypage">내 정보</router-link></li>
-            <li><router-link to="/Calendar">Elements</router-link></li>
-            <li><router-link to="/Intro">인트로</router-link></li>
+            <li><router-link to="/logout">로그아웃</router-link></li>
           </ul>
         </div>
         <a class="close disableLink" href="#" @click="menuToggle">Close</a>
