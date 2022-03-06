@@ -31,30 +31,33 @@ function myPageCheck(auth) {
 }
 
 function recordsGet(auth) {
-  return main.get(
-    'records-main/',
-    {
-      headers: {
-        AUTH_TOKEN: auth,
-      }
-    }
-  )
+  return main.get('records-main/', {
+    headers: {
+      AUTH_TOKEN: auth,
+    },
+  })
+}
+
+export function recordsGetByDate(auth, date) {
+  return main.get('records-main/', {
+    headers: {
+      AUTH_TOKEN: auth,
+    },
+    params: {
+      date,
+    },
+  })
 }
 
 function recordsGetId(auth, id) {
   const request = {
-    recordId:id
+    recordId: id,
   }
-  return main.post(
-    'records/'+id,
-    request,
-    {
-      headers: {
-        AUTH_TOKEN: auth,
-      }
+  return main.post('records/' + id, request, {
+    headers: {
+      AUTH_TOKEN: auth,
     },
-    
-  )
+  })
 }
 
 function recordsRegist(auth, title2, content2, fileKey2, thumbnailUrl2) {
@@ -87,6 +90,20 @@ export async function fetchHoliday({ year, month }) {
     console.log(temp)
     return `${temp.substr(0, 4)}-${temp.substr(4, 2)}-${temp.substr(6, 2)}`
   })
+}
+
+export async function getCalendar(auth, { year, month }) {
+  return (
+    await main.get('records-calendar', {
+      headers: {
+        AUTH_TOKEN: auth,
+      },
+      params: {
+        year,
+        month,
+      },
+    })
+  ).data?.data
 }
 
 export { login, signUp, myPageCheck, recordsGet, recordsRegist, recordsGetId }
