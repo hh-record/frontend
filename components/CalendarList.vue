@@ -26,6 +26,11 @@ export default {
   async fetch() {
     this.listRecord = await recordsGetByDate(getSession(), this.date)
   },
+  watch: {
+    date() {
+      this.$fetch()
+    },
+  },
 }
 </script>
 

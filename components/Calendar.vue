@@ -24,13 +24,14 @@
         v-for="(day, i) in endDateOfMonth"
         :key="i"
         class="cell"
-        :class="{ holiday: isHoliday(day) }"
+        :class="{ holiday: isHoliday(day), selected: isSelected(day) }"
+        @click="selectDate(day)"
       >
         {{ day }}
         <span v-if="isWrittenDay(day)">📝</span>
       </div>
     </div>
-    <calendar-list date="2022-03-01" />
+    <calendar-list v-if="selectedDate" :date="selectedDate" />
   </div>
 </template>
 
@@ -61,7 +62,9 @@ export default {
     },
   },
   data() {
-    return {}
+    return {
+      selectedDate: null,
+    }
   },
   computed: {
     monthString() {
@@ -91,7 +94,7 @@ export default {
   },
   watch: {},
   methods: {
-    isWrittenDay(day) {
+    getDateString(day) {
       const temp = new Date()
       temp.setFullYear(this.year)
       temp.setMonth(this.month - 1)
@@ -101,20 +104,19 @@ export default {
         .toString()
         .padStart(2, '0')}-${temp.getDate().toString().padStart(2, '0')}`
 
-      return this.listRecord.includes(dateString)
+      return dateString
+    },
+    isWrittenDay(day) {
+      return this.listRecord.includes(this.getDateString(day))
     },
     isHoliday(day) {
-      const temp = new Date()
-      temp.setFullYear(this.year)
-      temp.setMonth(this.month - 1)
-      temp.setDate(day)
-
-      const dateString = `${temp.getFullYear()}-${(temp.getMonth() + 1)
-        .toString()
-        .padStart(2, '0')}-${temp.getDate().toString().padStart(2, '0')}`
-
-      console.log({ day, flag: this.listHoliday?.includes?.(dateString) })
-      return this.listHoliday?.includes?.(dateString)
+      return this.listHoliday?.includes?.(this.getDateString(day))
+    },
+    selectDate(day) {
+      this.selectedDate = this.getDateString(day)
+    },
+    isSelected(day) {
+      return this.selectedDate === this.getDateString(day)
     },
   },
 }
@@ -135,7 +137,7 @@ export default {
   justify-content: space-around;
 }
 
-.calendar > * {
+.calendar > div {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   align-items: stretch;
@@ -176,5 +178,9 @@ export default {
 .cell:not(.blank) span {
   font-size: x-large;
   margin: auto;
+}
+
+.cell.selected {
+  box-shadow: 0 0 5px #585858;
 }
 </style>
