@@ -49,7 +49,6 @@ export default {
     baseURL: '/',
     proxy: true,
   },
-
   proxy: {
     '/getRestDeInfo': {
       target: 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService',
