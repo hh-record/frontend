@@ -61,9 +61,7 @@ export default {
   },
   methods: {
     myInfo(auth) {
-      console.log('실행')
       myPageCheck(auth).then((res) => {
-        console.log(res)
         this.data = res.data.data
       })
     },

@@ -25,10 +25,8 @@ export default {
   middleware: 'authentication',
   async asyncData({params}) {
     const auth= getSession()
-    console.log(auth)
     const response = await recordsGetId(auth,params.id)
     // const product = response.data
-    console.log(response)
     const record = response.data.data;
     return { record }
   },

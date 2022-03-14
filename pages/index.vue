@@ -119,7 +119,6 @@ export default {
   methods: {
     get(token) {
       recordsGet(token).then((res) => {
-        console.log(res)
         this.data = res.data.data
       })
       .catch(err =>{console.log(err)})

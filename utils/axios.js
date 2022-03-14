@@ -86,10 +86,8 @@ export async function fetchHoliday({ year, month }) {
     },
   })
 
-  console.log(response)
   return response?.data?.response?.body?.items?.item?.map?.((value) => {
     const temp = value?.locdate.toString?.()
-    console.log(temp)
     return `${temp.substr(0, 4)}-${temp.substr(4, 2)}-${temp.substr(6, 2)}`
   })
 }

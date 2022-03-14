@@ -8,7 +8,6 @@ const setSession = function(token2) {
       return null;
     }
     try {
-      console.log("123")
       const object = sessionStorage.getItem("SESSION");
         return object;
       }
