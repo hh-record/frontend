@@ -57,9 +57,6 @@ export default {
     baseURL: '/',
     proxy: true,
   },
-  router: {
-    base: 'hh-record.github.io/frontend/'
-  },
   proxy: {
     '/getRestDeInfo': {
       target: 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService',
