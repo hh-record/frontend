@@ -51,7 +51,7 @@ export default {
     proxy: true,
   },
   router: {
-    base: '/record/'
+    base: '/frontend/'
   },
   proxy: {
     '/getRestDeInfo': {
