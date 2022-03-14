@@ -71,7 +71,7 @@ export default {
         this.fileUrl,
         this.fileUrl
       ).then((res) => {
-        console.log(res)
+        this.$router.push('/')
       })
     },
   },
