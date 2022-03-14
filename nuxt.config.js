@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'frontend',
+    title: 'HH',
     htmlAttrs: {
       lang: 'en',
     },
@@ -18,7 +18,15 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
       {'http-equiv':"Content-Security-Policy", content:"upgrade-insecure-requests"}
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          'https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap'
+      }
+    ],
+    
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
