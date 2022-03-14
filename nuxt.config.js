@@ -50,6 +50,9 @@ export default {
     baseURL: '/',
     proxy: true,
   },
+  router: {
+    base: '/record/'
+  },
   proxy: {
     '/getRestDeInfo': {
       target: 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService',
@@ -62,5 +65,6 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+    // Build path change
+
 }
