@@ -58,7 +58,7 @@ export default {
     proxy: true,
   },
   router: {
-    base: '/frontend/'
+    base: 'hh-record.github.io/frontend/'
   },
   proxy: {
     '/getRestDeInfo': {
