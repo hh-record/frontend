@@ -62,16 +62,17 @@
           >
         </div>
         <section class="tiles">
-          <article v-for="(item,index) in data" :key="index" class="style1">
+          <article v-for="(item,index) in data" :key="index" :class="'style'+parseInt(index+1)">
             <span class="image">
-              <img :src="item.thumbnailUrl" alt="" />
+              <img v-if="item.thumbnailUrl" :src="item.thumbnailUrl" alt="" />
+              <img v-if="!item.thumbnailUrl" src="../assets/main-images/pic05.jpg" alt="" />
             </span>
-            <a href="record_detail.html">
+            <router-link :to="'/record/'+item.record_seq">
               <h2>{{item.modDate}}</h2>
               <div class="content">
                 <p>{{item.title}}</p>
               </div>
-            </a>
+            </router-link>
           </article>
           
         </section>

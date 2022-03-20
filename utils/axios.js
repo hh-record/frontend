@@ -30,12 +30,18 @@ function myPageCheck(auth) {
   })
 }
 
+
+
 function recordsGet(auth) {
-  return main.get('records-main/', {
+  return main.get('records-main/',{
     headers: {
       AUTH_TOKEN: auth,
     },
-  })
+    params: {
+      
+    },
+  },
+  )
 }
 
 export async function recordsGetByDate(auth, date) {
@@ -62,14 +68,42 @@ function recordsGetId(auth, id) {
   })
 }
 
-function recordsRegist(auth, title2, content2, fileKey2, thumbnailUrl2) {
+function recordsRegist(auth, title, content, fileKey, thumbnailUrl,themeUse) {
   const request = {
-    title: title2,
-    content: content2,
-    fileKey: fileKey2,
-    thumbnailUrl: thumbnailUrl2,
+    title,
+    content,
+    fileKey,
+    thumbnailUrl,
+    themeUse,
   }
   return main.post('records', request, {
+    headers: {
+      AUTH_TOKEN: auth,
+    },
+  })
+}
+function recordsDelete(params,auth,id2) {
+  const request = {
+    id:id2,
+  }
+  return main.delete('records/'+params, {
+      headers: {
+        AUTH_TOKEN: auth,
+      },
+    }, 
+    request,
+  )
+}
+function recordsModify(params,auth,id,title,content,fileKey,thumbnailUrl,themeUse){
+  const request = {
+    id,
+    title,
+    content,
+    fileKey,
+    thumbnailUrl,
+    themeUse,
+  }
+  return main.put('records/'+params, request, {
     headers: {
       AUTH_TOKEN: auth,
     },
@@ -106,4 +140,4 @@ export async function getCalendar(auth, { year, month }) {
   ).data?.data
 }
 
-export { login, signUp, myPageCheck, recordsGet, recordsRegist, recordsGetId }
+export { login, signUp, myPageCheck, recordsGet, recordsRegist, recordsGetId, recordsModify, recordsDelete }

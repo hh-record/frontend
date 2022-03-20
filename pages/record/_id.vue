@@ -11,8 +11,8 @@
           <p v-html="record.content"></p>
 
         </section>
-        <a href="record_regist.html" class="button">수정하기</a>
-        <a href="#" class="button">삭제하기</a>
+        <router-link :to="'/modify/'+record.record_seq" class="button">수정하기</router-link>
+        <a class="button" @click="this.delete">삭제하기</a>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
 
 <script>
 import { getSession } from '~/utils/auth'
-import {recordsGetId} from "~/utils/axios"
+import {recordsGetId,recordsDelete} from "~/utils/axios"
 export default {
   middleware: 'authentication',
   async asyncData({params}) {
@@ -40,7 +40,15 @@ export default {
     this.token= getSession()
   },
   methods: {
-    
+    delete(){
+      recordsDelete(
+        this.record.record_seq,
+        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJyb2xlcyI6W119.mVQhY-fm8FQGBrCSPdNnx3FMSB622v0t7hlB3KKSACA',
+        this.record.record_seq,
+      ).then(
+        this.$router.push('/')
+      )
+    }
   }
 }
 </script>
