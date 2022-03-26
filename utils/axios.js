@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 const intro = axios.create({
-  baseURL: 'http://3.36.30.114:8080/hh-record-intro/',
+  baseURL: 'https://api-record.site/hh-record-intro/',
 })
 
 const main = axios.create({
-  baseURL: 'http://3.36.30.114:8080/hh-record/',
+  baseURL: 'https://api-record.site/hh-record/',
 })
 
 const calendar = axios.create({})

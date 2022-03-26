@@ -181,6 +181,7 @@ export default {
           if (data.code === 200) {
             console.log(data)
             sessionStorage.setItem('SESSION', data.data)
+            alert("")
             this.$router.replace('/')
             // } else {
             // alert("아이디와 비밀번호를 확인하신 후 다시 시도해 주세요.");
@@ -190,6 +191,7 @@ export default {
           }
         })
         .catch((err) => {
+          alert("시스템 오류로 인해 로그인에 실패하였습니다. 관리자에게 문의해주세요.")
           console.log(err)
         })
     },
