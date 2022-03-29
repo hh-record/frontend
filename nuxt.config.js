@@ -17,15 +17,14 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href:
-          'https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap'
-      }
+        href: 'https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap',
+      },
     ],
-    
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -69,6 +68,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-    // Build path change
-
+  // Build path change
 }

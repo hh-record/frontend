@@ -22,9 +22,9 @@
           </div>
           <div class="mt-5">
             <ul class="alt list">
-              <li v-for="(item,index) in data" :key="index">
-                <router-link :to="'/record/'+item.record_seq">
-                  {{item.modDate}} {{item.title}}
+              <li v-for="(item, index) in data" :key="index">
+                <router-link :to="'/record/' + item.record_seq">
+                  {{ item.modDate }} {{ item.title }}
                 </router-link>
               </li>
             </ul>
@@ -62,19 +62,26 @@
           >
         </div>
         <section class="tiles">
-          <article v-for="(item,index) in data" :key="index" :class="'style'+parseInt(index+1)">
+          <article
+            v-for="(item, index) in data"
+            :key="index"
+            :class="'style' + parseInt(index + 1)"
+          >
             <span class="image">
               <img v-if="item.thumbnailUrl" :src="item.thumbnailUrl" alt="" />
-              <img v-if="!item.thumbnailUrl" src="../assets/main-images/pic05.jpg" alt="" />
+              <img
+                v-if="!item.thumbnailUrl"
+                src="../assets/main-images/pic05.jpg"
+                alt=""
+              />
             </span>
-            <router-link :to="'/record/'+item.record_seq">
-              <h2>{{item.modDate}}</h2>
+            <router-link :to="'/record/' + item.record_seq">
+              <h2>{{ item.modDate }}</h2>
               <div class="content">
-                <p>{{item.title}}</p>
+                <p>{{ item.title }}</p>
               </div>
             </router-link>
           </article>
-          
         </section>
       </div>
       <!-- <div class="pagination">
@@ -106,11 +113,11 @@ export default {
   data() {
     return {
       data: '',
-      token:"",
+      token: '',
     }
   },
   created() {
-    this.token= getSession()
+    this.token = getSession()
     this.get(this.token)
   },
   metaInfo: {
@@ -119,10 +126,13 @@ export default {
   },
   methods: {
     get(token) {
-      recordsGet(token).then((res) => {
-        this.data = res.data.data
-      })
-      .catch(err =>{console.log(err)})
+      recordsGet(token)
+        .then((res) => {
+          this.data = res.data.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
   },
 }

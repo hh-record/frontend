@@ -34,34 +34,33 @@
 import TiptapEditor from '~/components/TiptapEditor.vue'
 import { recordsModify } from '@/utils/axios'
 import { getSession } from '~/utils/auth'
-import {recordsGetId} from "~/utils/axios"
+import { recordsGetId } from '~/utils/axios'
 
 export default {
   components: {
     TiptapEditor,
   },
   middleware: 'authentication',
-  async asyncData({params}) {
-    const auth= getSession()
-    const response = await recordsGetId(auth,params.id)
+  async asyncData({ params }) {
+    const auth = getSession()
+    const response = await recordsGetId(auth, params.id)
     // const product = response.data
-    const record = response.data.data;
+    const record = response.data.data
     return { record }
   },
   data() {
     return {
       title: '',
       content: '',
-      
     }
   },
   computed: {
-      fileUrl(){
-          return this.record.fileUrl[0]
-      },
-      themeUse(){
-          return this.record.themeUse
-      }
+    fileUrl() {
+      return this.record.fileUrl[0]
+    },
+    themeUse() {
+      return this.record.themeUse
+    },
   },
   metaInfo: {},
   methods: {
@@ -89,7 +88,7 @@ export default {
         this.content,
         this.fileUrl,
         this.fileUrl,
-        this.themeUse,
+        this.themeUse
       ).then((res) => {
         this.$router.push('/')
       })

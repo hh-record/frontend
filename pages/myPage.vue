@@ -5,39 +5,30 @@
         <div class="col-md-12 order-md-1">
           <h4 class="mb-3">내 정보</h4>
 
-            <div class="mb-3">
-              <label for="address">ID</label>
-              <div>
-                {{data.id}}
-              </div>
+          <div class="mb-3">
+            <label for="address">ID</label>
+            <div>
+              {{ data.id }}
             </div>
-            <div class="mb-3">
-              <label for="username">Username</label>
-              <div class="input-group">
-
-                {{data.userName}}
-
-              </div>
+          </div>
+          <div class="mb-3">
+            <label for="username">Username</label>
+            <div class="input-group">
+              {{ data.userName }}
             </div>
+          </div>
 
-            <div class="mb-3">
-              <label for="email"
-                >Email</label
-              >
-              <div>{{data.email}}</div>
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <div>{{ data.email }}</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address2">phoneNumber </label>
+            <div>
+              {{ data.phoneNumber }}
             </div>
-
-
-
-            <div class="mb-3">
-              <label for="address2"
-                >phoneNumber </label
-              >
-              <div>
-                {{data.phoneNumber}}
-              </div>
-            </div>
-
+          </div>
         </div>
       </div>
     </div>
